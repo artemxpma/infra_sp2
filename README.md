@@ -29,7 +29,7 @@ DB_HOST=db
 DB_PORT=5432
 ```
 
-### Installation
+## Installation
 
 Для запуска приложения проделайте следующие шаги:
 
@@ -44,16 +44,18 @@ python manage.py collectstatic --no-input
 ```
 5. Project is up. Admin panel is available at http:/localhost/admin, ReDoc is availiable at http:/localhost/redoc
 
-## Загрузка тестовых значений в БД
+## Upload test data into DB
 
-Чтобы загрузить тестовые значения в базу данных перейдите в каталог проекта и скопируйте файл базы данных в контейнер приложения:
+Copy db file from your app directory into container using next command:
+```sh
+$ docker cp <DB FILE> <CONTAINER>:/app/<DATABASE>
 ```
-docker cp <DATA BASE> <CONTAINER ID>:/app/<DATA BASE>
+Load data from file inside your container:
+```sh
+$ docker container exec -it <CONTAINER> bash
 ```
-Перейдите в контейнер приложения и загрузить данные в БД: 
 ```
-docker container exec -it <CONTAINER ID> bash
-python manage.py loaddata <DATA BASE>
+python manage.py loaddata <DATABASE>
 ```
 
 ## Made by Mikhail Rizhikau, Alexey Nikolaev, Artem Sinitsyn. Curated by Ya.Practicum.
